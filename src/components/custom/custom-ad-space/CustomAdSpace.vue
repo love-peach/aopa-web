@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  
-}
+  name: 'CustomAdSpace',
+};
 </script>
 
 <style lang="scss">
@@ -16,5 +16,3 @@ export default {
     border: 1px solid #999;
   }
 </style>
-
-

@@ -6,12 +6,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  
-}
-</script>
-
 <style lang="scss">
   .app-header {
     color: #fff;
@@ -23,5 +17,3 @@ export default {
     border: 1px solid #fff;
   }
 </style>
-
-

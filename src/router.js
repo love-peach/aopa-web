@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
-import AppLayout from './components/AppLayout.vue';
-import AppAdSpace from './components/AppAdSpace.vue';
-import SomePage from './views/SomePage.vue';
-import AnotherPage from './views/AnotherPage.vue';
-import Error404 from './components/Error404.vue';
-import RouterView from './views/RouterView.vue';
+import AppLayout from './components/framework/AppLayout.vue';
+import RouterView from './views/router-view/RouterView.vue';
+
+// 一级路由
+const Home = () => import('./views/home/index.vue');
+const Error404 = () => import('./components/error/Error404.vue');
+
+// 二级路由
 
 Vue.use(Router);
 
@@ -22,62 +23,45 @@ export default new Router({
         {
           path: '/',
           name: '首页',
-          components: {
-            default: Home,
-            sideLeft: SomePage,
-            sideRight: AnotherPage,
-            ad: AppAdSpace,
-          },
+          component: Home,
         },
         {
-          path: '/about',
+          path: 'about',
           name: '关于',
-          components: {
-            default: () => import('./views/About.vue'),
-            sideLeft: AnotherPage,
-            sideRight: SomePage,
-          },
+          component: () => import('./views/about/About.vue'),
         },
         {
-          path: '/news',
+          path: 'news',
           name: '新闻',
+          redirect: '/news',
           component: RouterView,
           children: [
             {
               path: '/',
               name: '',
-              component: () => import('./views/news/index/index.vue'),
+              component: () => import('./views/news/index.vue'),
             },
             {
               path: 'billboards',
               name: '公告',
+              redirect: '/billboards',
               component: RouterView,
               children: [
                 {
                   path: '/',
                   name: '',
-                  component: () => import('./views/news/billboards/billboards.vue'),
+                  component: () => import('./views/news/billboards/index.vue'),
                 },
                 {
                   path: ':id',
-                  name: '详情',
-                  component: () => import('./views/news/billboards/details/details.vue'),
+                  name: '新闻详情',
+                  component: () => import('./views/news/billboards/details/index.vue'),
                 },
               ],
             },
           ],
         },
-        {
-          path: '/details/:id',
-          name: '详情',
-          component: () => import('./views/Details.vue'),
-        },
       ],
-    },
-    {
-      path: '/somepage',
-      name: 'somepage',
-      component: SomePage,
     },
     {
       path: '*',

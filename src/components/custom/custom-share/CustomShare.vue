@@ -1,17 +1,18 @@
 <template>
   <div class="app-share">
-      <span chass="share-out-text">分享</span>
-      <ul class="share-list">
-        <li class="share-list-item" v-for="item, index in shareList">
-          <img class="share-item-img" src="../assets/logo.png" alt="">
-          <span class="share-item-text" >{{item.text}}</span>
-        </li>
-      </ul>
+    <span chass="share-out-text">分享</span>
+    <ul class="share-list">
+      <li class="share-list-item" v-for="(item, index) in shareList" :key="index">
+        <img class="share-item-img" src="../../../assets/logo.png" alt="">
+        <span class="share-item-text" >{{ item.text }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'CustomShare',
   data() {
     return {
       shareList: [
@@ -30,11 +31,11 @@ export default {
         {
           icon: '',
           text: 'QQ好友',
-        }
-      ]
+        },
+      ],
     };
-  }
-}
+  },
+};
 </script>
 
 <style scooed lang="scss">
@@ -47,9 +48,6 @@ export default {
   }
   .app-share:hover .share-list {
     display: block;
-  }
-  .share-out-text {
-
   }
   .share-list {
     display: none;
@@ -67,9 +65,4 @@ export default {
   .share-item-img {
     width: 25px;
   }
-  .share-item-text {
-
-  }
 </style>
-
-

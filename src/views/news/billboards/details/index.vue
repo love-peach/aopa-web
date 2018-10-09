@@ -10,7 +10,6 @@
         222
       </app-layout-side-right>
     </template>
-    <h2>新闻首页</h2>
-    <router-link to="/news/billboards">公告</router-link><br>
+    <h2>详情</h2>
   </app-layout-page>
 </template>

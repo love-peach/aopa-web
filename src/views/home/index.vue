@@ -1,9 +1,19 @@
 <template>
-  <div class="home">
+  <app-layout-page>
+    <template slot="sideLeft">
+      <app-layout-side-left>
+        <h1>fefe</h1>
+      </app-layout-side-left>
+    </template>
+    <template slot="sideRight">
+      <app-layout-side-right>
+        fefe
+      </app-layout-side-right>
+    </template>
     <h1>首页</h1>
-    <img alt="Vue logo" src="../assets/logo.png"><br>
+    <img alt="Vue logo" src="../../assets/logo.png"><br>
     <router-link to="/about">about</router-link><br>
-    <router-link to="/news">news</router-link><br>
+    <router-link :to="{name: '新闻'}">news</router-link><br>
     <router-link to="/details/12">detail</router-link>
     <div class="container">
       <div class="row">
@@ -23,14 +33,12 @@
         <td>$100</td>
       </tr>
     </table>
-  </div>
+  </app-layout-page>
 </template>
 
 <script>
-
 export default {
-  name: 'home',
+  name: 'HomePage',
   components: {},
 };
 </script>
-

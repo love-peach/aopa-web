@@ -8,12 +8,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  
-}
-</script>
-
 <style lang="scss">
   .app-footer {
     color: #fff;
@@ -25,5 +19,3 @@ export default {
     border: 1px solid #fff;
   }
 </style>
-
-

@@ -1,7 +1,12 @@
 <template>
-  <div class="about">
+  <app-layout-page class="about">
+    <template slot="sideRight">
+      <app-layout-side-right>
+        fefe
+      </app-layout-side-right>
+    </template>
     <h1>This is an about page</h1>
-    <p>{{poemsText}}</p>
+    <p>{{ poemsText }}</p>
     <img
       v-for="imgUrl in imgArr"
       :key="imgUrl"
@@ -9,7 +14,7 @@
       class="img"
       alt="图片"
     >
-  </div>
+  </app-layout-page>
 </template>
 
 
@@ -40,8 +45,8 @@ export default {
   created() {
     this.$fetch.get(apiUrl.poems).then((res) => {
       this.poemsText = res.result.content;
-    }).catch(err => {
-      console.log(err, 'err')
+    }).catch((err) => {
+      console.log(err, 'err');
     });
   },
 };

@@ -8,12 +8,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  
-}
-</script>
-
 <style scoped lang="scss">
   .app-category-nav {
     padding: 10px 0;
@@ -24,5 +18,3 @@ export default {
     border: 1px solid #ccc;
   }
 </style>
-
-
