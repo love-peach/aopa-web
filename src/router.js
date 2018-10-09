@@ -6,8 +6,14 @@ import RouterView from './views/router-view/RouterView.vue';
 // 一级路由
 const Home = () => import('./views/home/index.vue');
 const Error404 = () => import('./components/error/Error404.vue');
+const About = () => import('./views/about/About.vue');
+const News = () => import('./views/news/index.vue');
 
 // 二级路由
+const NewsBillboards = () => import('./views/news/billboards/index.vue');
+
+// 三级路由
+const NewsDetails = () => import('./views/news/billboards/details/index.vue');
 
 Vue.use(Router);
 
@@ -28,7 +34,7 @@ export default new Router({
         {
           path: 'about',
           name: '关于',
-          component: () => import('./views/about/About.vue'),
+          component: About,
         },
         {
           path: 'news',
@@ -39,7 +45,7 @@ export default new Router({
             {
               path: '/',
               name: '',
-              component: () => import('./views/news/index.vue'),
+              component: News,
             },
             {
               path: 'billboards',
@@ -50,12 +56,12 @@ export default new Router({
                 {
                   path: '/',
                   name: '',
-                  component: () => import('./views/news/billboards/index.vue'),
+                  component: NewsBillboards,
                 },
                 {
                   path: ':id',
                   name: '新闻详情',
-                  component: () => import('./views/news/billboards/details/index.vue'),
+                  component: NewsDetails,
                 },
               ],
             },

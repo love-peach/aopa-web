@@ -34,7 +34,7 @@ yarn run lint
 - [ ] 路由鉴权
 - [ ] scrollBehavior
 - [ ] cookie 策略
-- [ ] 本地存储方案
+- [x] 本地存储方案
 - [x] sass 变量的全局引用
 - [ ] axios封装 连点cancel 本地断网处理
 - [x] api 请求接口的封装

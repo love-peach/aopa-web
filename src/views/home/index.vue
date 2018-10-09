@@ -2,12 +2,12 @@
   <app-layout-page>
     <template slot="sideLeft">
       <app-layout-side-left>
-        <h1>fefe</h1>
+        fefe
       </app-layout-side-left>
     </template>
     <template slot="sideRight">
       <app-layout-side-right>
-        fefe
+        <Login></Login>
       </app-layout-side-right>
     </template>
     <h1>首页</h1>
@@ -37,8 +37,12 @@
 </template>
 
 <script>
+import Login from '../../components/custom/custom-login/CustomLogin.vue';
+
 export default {
   name: 'HomePage',
-  components: {},
+  components: {
+    Login,
+  },
 };
 </script>
