@@ -1,17 +1,35 @@
 module.exports = {
   root: true,
+
   env: {
     node: true,
   },
+
   extends: [
     'plugin:vue/essential',
     '@vue/airbnb',
   ],
+
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 'off',
+    'no-debugger': 'off',
+    'no-param-reassign': [2, { 'props': false }],
+    'vue/html-self-closing': 'off',
+    'vue/max-attributes-per-line': [2, {
+      "singleline": 4,
+      "multiline": {
+        "max": 1,
+        "allowFirstLine": false
+      }
+    }],
   },
+
   parserOptions: {
     parser: 'babel-eslint',
   },
+
+  'extends': [
+    'plugin:vue/strongly-recommended',
+    '@vue/airbnb'
+  ]
 };
