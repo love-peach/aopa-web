@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueLazyLoad from 'vue-lazyload';
 import App from './App.vue';
 import router from './router';
-import store from './store';
+import store from './store/';
 import Http from './utils/http';
 import './assets/style/index.scss';
 import globalComponents from './utils/global-components';

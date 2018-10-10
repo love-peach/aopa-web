@@ -1,7 +1,8 @@
 <template>
   <div class="custom-login">
-    <div v-if="name123">
-      登录名：{{ name123 }}
+    <div v-if="userInfo">
+      登录名：{{ userInfo.userName }} <br>
+      userInfoName: {{ userInfoName }}
     </div>
     <div v-else>
       <label for="">用户名</label>
@@ -12,6 +13,8 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+
 export default {
   name: 'CustomLogin',
   data() {
@@ -20,13 +23,26 @@ export default {
     };
   },
   computed: {
-    name123() {
-      return this.$store.state.userName;
-    },
+    ...mapState([
+      'userInfo',
+    ]),
+    ...mapGetters([
+      'userInfoName',
+    ]),
+    // userInfo() {
+    //   return this.$store.state.userInfo;
+    // },
   },
   methods: {
+    ...mapMutations([
+      'SEVE_USERINFO',
+    ]),
+    ...mapActions([
+      'saveUserInfo',
+    ]),
     login() {
-      this.$store.commit('login', { userName: this.userName });
+      // this.SEVE_USERINFO({ userName: this.userName });
+      this.saveUserInfo({ userName: this.userName });
     },
   },
 };

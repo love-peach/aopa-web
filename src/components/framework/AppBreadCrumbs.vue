@@ -21,7 +21,6 @@ export default {
   computed: {
     breadCrumbsList() {
       const { matched } = this.$route;
-      console.log(this.$route, 'this.$route');
       const breadCrumbsList = [{
         name: '首页',
         path: '/',
@@ -38,7 +37,6 @@ export default {
       if (breadCrumbsList.length === 1) {
         breadCrumbsList[0].isCurrentPath = true;
       }
-      console.log(breadCrumbsList, 'breadCrumbsList');
       return breadCrumbsList;
     },
   },
