@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import AppBreadCrumbs from './AppBreadCrumbs.vue';
-import CustomShare from '../custom/custom-share/CustomShare.vue';
-import CustomAdSpace from '../custom/custom-ad-space/CustomAdSpace.vue';
+import AppBreadCrumbs from '@/components/framework/AppBreadCrumbs.vue';
+import CustomShare from '@/components/custom/custom-share/CustomShare.vue';
+import CustomAdSpace from '@/components/custom/custom-ad-space/CustomAdSpace.vue';
 
 export default {
   components: {

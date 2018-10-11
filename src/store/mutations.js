@@ -1,5 +1,5 @@
 // 下面这个store 是浏览器 localStorage sessionStorage的封装
-import store from '../utils/store';
+import store from '@/utils/store';
 import { SEVE_USERINFO } from './mutation-types';
 
 // TODO: Mutation 必须是同步函数

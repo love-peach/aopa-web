@@ -3,7 +3,7 @@
     <span chass="share-out-text">分享</span>
     <ul class="share-list">
       <li class="share-list-item" v-for="(item, index) in shareList" :key="index">
-        <img class="share-item-img" src="../../../assets/logo.png" alt="">
+        <img class="share-item-img" src="@/assets/logo.png" alt="">
         <span class="share-item-text" >{{ item.text }}</span>
       </li>
     </ul>

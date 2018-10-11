@@ -31,12 +31,12 @@ yarn run lint
 - [x] 目录结构梳理
 - [ ] 路由嵌套组合
 - [x] 页面布局（粘性底部 命名视图 framwork7）
-- [ ] 路由鉴权
-- [ ] scrollBehavior
+- [x] 路由鉴权
+- [x] scrollBehavior
 - [ ] cookie 策略
 - [x] 本地存储方案
 - [x] sass 变量的全局引用
-- [ ] axios封装 连点cancel 本地断网处理
+- [x] axios封装 连点cancel 本地断网处理
 - [x] api 请求接口的封装
 - [x] 代理
 - [ ] mock
@@ -47,7 +47,7 @@ yarn run lint
 - [x] directive
 - [ ] UI 框架的选择
 - [x] 图片懒加载
-- [ ] keep-alive
+- [x] keep-alive
 - [ ] 字体图标
 - [ ] 需要做 rem 方案吗
 - [ ] fastclick 需要加吗（fastclick好像对移动端作用较大）
@@ -132,6 +132,36 @@ src
 ### 页面编写规范
 
 由于项目对页面做了统一布局，所有，在编写页面的时候，需要恶心一定，统一放在 `<app-layout-page>...</app-layout-page>` 标签中。
+
+### 路径写法规范
+
+统一采用 `@` 符号路径写法，方便文件位置变动。
+
+### 组件引入与使用规范
+
+引入组件时，统一采用大驼峰写法，
+在模板中使用是，采用 `中划线-`， 的形式，如下：
+
+```html
+<template>
+  <div>
+    <app-header></app-header>
+    <app-category-nav></app-category-nav>
+  </div>
+</template>
+<script>
+  import AppHeader from './AppHeader.vue';
+  import AppCategoryNav from './AppCategoryNav.vue';
+
+  export default {
+    name: '',
+    components: {
+      AppHeader,
+      AppCategoryNav
+    },
+  };
+</script>
+```
 
 ## 有问有答
 

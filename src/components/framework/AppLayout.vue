@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import AppHeader from './AppHeader.vue';
-import AppFooter from './AppFooter.vue';
-import AppCategoryNav from './AppCategoryNav.vue';
+import AppHeader from '@/components/framework/AppHeader.vue';
+import AppFooter from '@/components/framework/AppFooter.vue';
+import AppCategoryNav from '@/components/framework/AppCategoryNav.vue';
 
 export default {
   name: 'AppLayout',

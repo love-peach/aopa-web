@@ -12,7 +12,7 @@
     </template>
     <h1 v-waves="{color: 'rgba(255,0,0,.3)'}">首页2</h1>
     <h1 v-waves v-dbClick="demo">首页2</h1>
-    <img alt="Vue logo" src="../../assets/logo.png"><br>
+    <img alt="Vue logo" src="@/assets/logo.png"><br>
     <router-link to="/about">about</router-link><br>
     <router-link :to="{name: '新闻'}">news</router-link><br>
     <router-link to="/details/12">detail</router-link>
