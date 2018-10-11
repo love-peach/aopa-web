@@ -28,8 +28,8 @@ yarn run lint
 
 ## TODO
 
-- [x] 目录结构梳理
-- [ ] 路由嵌套组合
+- [x] 目录结构梳理
+- [ ] 路由嵌套组合
 - [x] 页面布局（粘性底部 命名视图 framwork7）
 - [x] 路由鉴权
 - [x] scrollBehavior
@@ -51,7 +51,7 @@ yarn run lint
 - [ ] 字体图标
 - [ ] 需要做 rem 方案吗
 - [ ] fastclick 需要加吗（fastclick好像对移动端作用较大）
-- [ ] 项目规范 https://cn.vuejs.org/v2/style-guide/index.html
+- [ ] 项目规范 https://cn.vuejs.org/v2/style-guide/index.html
 - [ ] 前端代码优化压缩
 - [ ] 单页面方案 还是多页面方案
 
@@ -87,7 +87,7 @@ yarn run lint
 
 ```sh
 src
-├── assets/         静态资源目录
+├── assets/         静态资源目录
 ├── components/     组件目录
 ├── store/          store
 ├── styles/         项目全局样式目录
@@ -131,7 +131,7 @@ src
 
 ### 页面编写规范
 
-由于项目对页面做了统一布局，所有，在编写页面的时候，需要恶心一定，统一放在 `<app-layout-page>...</app-layout-page>` 标签中。
+由于项目对页面做了统一布局，所有，在编写页面的时候，需要恶心一定，统一放在 `<app-layout-page>...</app-layout-page>` 标签中。
 
 ### 路径写法规范
 
@@ -163,11 +163,11 @@ src
 </script>
 ```
 
-## 有问有答
+## 有问有答
 
 这一部分，主要是讲项目中搭建以及开发过程过程中的问题。
 
-### sass 全局变量怎么实现。
+### SASS 全局变量怎么实现。
 
 通过 `vue.config.js` 配置文件实现，将 sass 全局变量传递给 Loaser。本项目中，不仅将变量传递了，而且还将 placeholders 以及 mixins 传递了，这样一来，写样式起来就很方便了。
 
@@ -185,7 +185,6 @@ module.exports = {
 ```
 
 参考：[向预处理器 Loader 传递选项](https://cli.vuejs.org/zh/guide/css.html#%E5%90%91%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-loader-%E4%BC%A0%E9%80%92%E9%80%89%E9%A1%B9)
-
 
 ### 开发模式下，代理怎么设置？
 
