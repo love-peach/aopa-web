@@ -42,8 +42,9 @@ yarn run lint
 - [ ] mock
 - [x] utils commonjs 封装
 - [ ] 全局Toast
-- [ ] VueProgressBar
-- [ ] filters
+- [x] VueProgressBar
+- [x] filters
+- [x] directive
 - [ ] UI 框架的选择
 - [x] 图片懒加载
 - [ ] keep-alive

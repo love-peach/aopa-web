@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueLazyLoad from 'vue-lazyload';
+import VueProgressBar from 'vue-progressbar';
 import App from './App.vue';
 import router from './router';
 import store from './store/';
@@ -23,6 +24,11 @@ Vue.use(VueLazyLoad, {
 });
 /* eslint-enable global-require */
 
+// 顶部进度条动画
+Vue.use(VueProgressBar, {
+  color: '#fff',
+});
+
 // 注册全局 filter
 Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
@@ -33,7 +39,8 @@ Vue.prototype.$fetch = Http;
 
 Vue.config.productionTip = false;
 
-new Vue({
+// 这里讲 vue 实例导出，是为了在 http.js 中使用。
+export default new Vue({
   router,
   store,
   render: h => h(App),

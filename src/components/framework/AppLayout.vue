@@ -4,7 +4,9 @@
       <app-header></app-header>
       <app-category-nav></app-category-nav>
       <transition name="slide-fade" mode="out-in">
-        <router-view></router-view>
+        <keep-alive>
+          <router-view :key="key"></router-view>
+        </keep-alive>
       </transition>
     </div>
     <app-footer></app-footer>
@@ -17,10 +19,16 @@ import AppFooter from './AppFooter.vue';
 import AppCategoryNav from './AppCategoryNav.vue';
 
 export default {
+  name: 'AppLayout',
   components: {
     AppHeader,
     AppFooter,
     AppCategoryNav,
+  },
+  computed: {
+    key() {
+      return this.$route.fullPath;
+    },
   },
 };
 </script>

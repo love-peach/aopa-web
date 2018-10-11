@@ -1,5 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
+import app from '../main';
 
 // 创建实例
 const instance = axios.create({});
@@ -31,6 +32,7 @@ instance.defaults.transformRequest = [data => (qs.stringify(data))];
 // 请求发送之前的拦截处理
 instance.interceptors.request.use((config) => {
   // loading
+  app.$Progress.start();
   const token = localStorage.getItem('token') || '';
   if (token) {
     config.headers.Token = token;
@@ -100,9 +102,11 @@ function handleErrMsg(error) {
 
 // 请求完成之后的拦截处理
 instance.interceptors.response.use((response) => {
+  app.$Progress.finish();
   console.log('%c 请求结果为：', 'font-size:14px;color:#5cb85c;font-weight:bold;', response);
   return response;
 }, (error) => {
+  app.$Progress.fail();
   handleErrMsg(error);
   console.error(error.message, 'interceptors.response error');
   return Promise.resolve(error.response);
@@ -126,11 +130,11 @@ function checkStatus(response) {
 function checkCode(res) {
   // 如果code异常(这里已经包括网络错误，服务器错误，后端抛出的错误)，可以弹出一个错误提示，告诉用户
   if (res.status === -404) {
-    alert(res.msg);
+    // alert(res.msg);
   }
   if (res.data && res.data.code !== 200) {
     console.log(res, 'res');
-    alert(res.data.dataerror_msg);
+    // alert(res.data.dataerror_msg);
   }
   return res.data;
 }
