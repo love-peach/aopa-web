@@ -125,9 +125,12 @@ src
 本项目对组件进行了分类，分为 框架级别，基本级别，错误级别，一般级别。
 
 框架级别：统一以 `APP` 开头。例如：`APPHeader`，`APPFooter`，`AppBreadCrumbs`。
+
 基础级别：统一以 `Basic` 开头。例如：`BasicButton`，`BasicTable`，`BasicIcon`。
+
 错误级别：统一以 `Error` 开头。例如：`Error404`，`Error500`。
-一般级别：统一以 `Custom` 开头。例如：`CustomList`，`CustomListItem`
+
+一般级别：统一以 `Custom` 开头。例如：`CustomList`，`CustomListItem`。
 
 ### 页面编写规范
 
@@ -136,6 +139,14 @@ src
 ### 路径写法规范
 
 统一采用 `@` 符号路径写法，方便文件位置变动。
+
+```js
+// bad
+import Login from '../../components/custom/custom-login/CustomLogin.vue';
+
+// good
+import Login from '@/components/custom/custom-login/CustomLogin.vue';
+```
 
 ### 组件引入与使用规范
 
@@ -167,7 +178,64 @@ src
 
 这一部分，主要是讲项目中搭建以及开发过程过程中的问题。
 
-### SASS 全局变量怎么实现。
+### 页面布局怎么实现？
+
+因为有个项目，它的布局比较灵活，基本上页面上的各个部分都是可配置的，比如有的页面有 `sideLeft`，有的页面有 `sideRight`，有的都有，有的都没有。因此，在仔细浏览过原型后，有了这个项目。
+
+大布局，就不用细说了，请看 `components/framework/AppLayout.vue`，一个 `header`，一个 粘性`footer`，还是比较简单的。
+
+主要是 `sideLeft`、`sideRight`，怎么做到可配置。请看 `components/framework/AppLayoutPage.vue`，主要是利用 `slot`，插槽来实现的。
+
+```html
+<template>
+  <div class="app-container">
+    <div class="app-container-inside">
+      <!-- <router-view class="app-side-left" name="sideLeft"></router-view> -->
+      <slot name="sideLeft"></slot>
+      <div class="app-content">
+        <slot name="breadCrumbs">
+          <app-bread-crumbs></app-bread-crumbs>
+        </slot>
+        <!-- <router-view class="app-side-right" name="sideRight"></router-view> -->
+        <slot name="sideRight"></slot>
+        <div class="app-content-inside">
+          <!-- <transition name="slide-fade" mode="out-in">
+            <router-view></router-view>
+          </transition> -->
+          <slot></slot>
+        </div>
+      </div>
+    </div>
+    <!-- <router-view name="ad"></router-view> -->
+    <slot name="ad">
+      <custom-ad-space></custom-ad-space>
+    </slot>
+    <!-- <app-share></app-share> -->
+    <slot name="share">
+      <custom-share></custom-share>
+    </slot>
+  </div>
+</template>
+```
+
+可以看上面的代码中注释的部分，那是最开始的方案，通过命名视图来实现，在二级路由是没问题的，如果有三级路由，命名视图就不好使了，所以换成了 `slot` 插槽实现方案。稍微有点恶心就是，需要在每个页面中，嵌套 `AppLayoutPage` 组件，如下：
+
+```html
+<template>
+  <app-layout-page>
+    <template slot="sideLeft">
+      ...
+    </template>
+    <template slot="sideRight">
+      ...
+    </template>
+    <div>...</div>
+  </app-layout-page>
+</template>
+```
+
+
+### SASS 全局变量怎么实现？
 
 通过 `vue.config.js` 配置文件实现，将 sass 全局变量传递给 Loaser。本项目中，不仅将变量传递了，而且还将 placeholders 以及 mixins 传递了，这样一来，写样式起来就很方便了。
 
