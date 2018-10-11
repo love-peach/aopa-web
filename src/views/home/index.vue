@@ -25,22 +25,12 @@
         <div class="col-3">4</div>
       </div>
     </div>
-    <table>
-      <tr>
-        <th>Month</th>
-        <th>Savings</th>
-      </tr>
-      <tr>
-        <td>January</td>
-        <td>$100</td>
-      </tr>
-    </table>
   </app-layout-page>
 </template>
 
 <script>
 import waves from '@/directive/waves'; // 水波纹指令
-import Login from '../../components/custom/custom-login/CustomLogin.vue';
+import Login from '@/components/custom/custom-login/CustomLogin.vue';
 
 export default {
   name: 'HomePage',

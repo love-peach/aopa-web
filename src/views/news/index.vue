@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Login from '../../components/custom/custom-login/CustomLogin.vue';
+import Login from '@/components/custom/custom-login/CustomLogin.vue';
 
 export default {
   components: {
