@@ -89,6 +89,9 @@ src
 ├── assets/         静态资源目录
 ├── components/     组件目录
 ├── store/          store
+├── styles/         项目全局样式目录
+├── diractive/      自定义指令
+├── filters/        自定义过滤器
 ├── views/          视图页面目录
 ├── utils/          工具类目录
 ├── App.vue         主组件

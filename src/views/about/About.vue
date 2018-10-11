@@ -6,7 +6,7 @@
       </app-layout-side-right>
     </template>
     <h1>This is an about page</h1>
-    <p>{{ poemsText }}</p>
+    <p v-dbClick="requestPoems">{{ poemsText }}</p>
     <img
       v-for="imgUrl in imgArr"
       :key="imgUrl"
@@ -43,11 +43,16 @@ export default {
     };
   },
   created() {
-    this.$fetch.get(apiUrl.poems).then((res) => {
-      this.poemsText = res.result.content;
-    }).catch((err) => {
-      console.log(err, 'err');
-    });
+    this.requestPoems();
+  },
+  methods: {
+    requestPoems() {
+      this.$fetch.get(apiUrl.poems).then((res) => {
+        this.poemsText = res.result.content;
+      }).catch((err) => {
+        console.log(err, 'err');
+      });
+    },
   },
 };
 </script>
