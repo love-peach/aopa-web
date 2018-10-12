@@ -4,9 +4,8 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
-
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production' ? '/aopa-web/' : '/',
+  baseUrl: process.env.BASE_URL,
   devServer: {
     port: 8082,
     open: true, // 配置自动启动浏览器

@@ -10,14 +10,7 @@ const promiseArr = {};
 const { CancelToken } = axios;
 
 // 根据运行环境 配置 baseURL
-if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'dev') {
-  // instance.defaults.baseURL = 'https://cnodejs.org/api/v1';
-  // instance.defaults.baseURL = 'someurl/';
-} else if (process.env.NODE_ENV === 'debug') {
-  instance.defaults.baseURL = '';
-} else if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'pro') {
-  instance.defaults.baseURL = 'http://api.apiopen.top/';
-}
+instance.defaults.baseURL = process.env.VUE_APP_AXIOS_BASE_URL;
 
 // 设置请求默认属性
 instance.defaults.timeout = 10000;
