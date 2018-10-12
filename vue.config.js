@@ -11,7 +11,7 @@ module.exports = {
     open: true, // 配置自动启动浏览器
     proxy: {
       '/api': {
-        target: 'http://api.apiopen.top/',
+        target: 'https://www.apiopen.top/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/',

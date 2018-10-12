@@ -174,6 +174,37 @@ import Login from '@/components/custom/custom-login/CustomLogin.vue';
 </script>
 ```
 
+### 环境变量定义与使用规范
+
+环境变量的作用我就不用说了，大概就是可以让程序根据不同的环境，做出不同的反应。
+
+环境变量统一放在 `.env.[mode]` 中。如下：
+
+```sh
+NODE_ENV=development
+BASE_URL=/
+
+VUE_APP_ENV=development
+VUE_APP_AXIOS_BASE_URL=''
+VUE_APP_URL_PREFIX='/api'
+```
+
+需要注意的是，在项目的不同位置使用环境变量，它的限制是不一样的。
+
+在`vue.config.js` 配置中使用，没什么限制，可以直接通过 `process.env.XXX` 来使用：
+
+```js
+module.exports = {
+  baseUrl: process.env.BASE_URL,
+}
+```
+
+在项目中，也就是 `src` 中使用环境变量的话，必须以 `VUE_APP_` 开头。例如我们可以在 `src/utils/http.js` 中使用：
+
+```js
+instance.defaults.baseURL = process.env.VUE_APP_AXIOS_BASE_URL;
+```
+
 ## 有问有答
 
 这一部分，主要是讲项目中搭建以及开发过程过程中的问题。
@@ -234,7 +265,6 @@ import Login from '@/components/custom/custom-login/CustomLogin.vue';
 </template>
 ```
 
-
 ### SASS 全局变量怎么实现？
 
 通过 `vue.config.js` 配置文件实现，将 sass 全局变量传递给 Loaser。本项目中，不仅将变量传递了，而且还将 placeholders 以及 mixins 传递了，这样一来，写样式起来就很方便了。
@@ -254,6 +284,16 @@ module.exports = {
 
 参考：[向预处理器 Loader 传递选项](https://cli.vuejs.org/zh/guide/css.html#%E5%90%91%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-loader-%E4%BC%A0%E9%80%92%E9%80%89%E9%A1%B9)
 
+### 项目中的环境变量具体是干嘛的？
+
+这里主要说明下项目中用到的环境变量的含义。
+
+- NODE_ENV // 项目环境变量
+- BASE_URL // 部署应用包时的基本 URL
+- VUE_APP_ENV // 项目环境变量，同 NODE_ENV 保持一致
+- VUE_APP_AXIOS_BASE_URL // 接口域名地址 如：http://www.aopa.com/
+- VUE_APP_URL_PREFIX // 接口url前缀 如：/api/someurl
+
 ### 开发模式下，代理怎么设置？
 
 通过 `vue.config.js` 配置文件实现
@@ -262,12 +302,12 @@ module.exports = {
 module.exports = {
   devServer: {
     proxy: {
-      '/poems': {
-        target: 'http://api.apiopen.top/singlePoetry',
+      '/api': {
+        target: 'http://api.apiopen.top/',
         ws: true,
         changeOrigin: true,
         pathRewrite: {
-          '^/poems': '/',
+          '^/api': '/',
         },
       },
     },
@@ -293,3 +333,31 @@ export default function (Vue) {
   Vue.component('AppLayoutSideRight', AppLayoutSideRight);
 }
 ```
+
+## 遇到的问题
+
+### https 中请求 http
+
+ 将本项目部署到 `github` 的 `gh-page` 分支里，部署之后发现报错了：
+
+ ```sh
+ xhr.js:178 Mixed Content: The page at 'https://love-peach.github.io/aopa-web/about' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://api.apiopen.top/singlePoetry'. This request has been blocked; the content must be served over HTTPS.
+ ```
+
+ 意思是 我的项目运行在 `https` 的 `github` 上，但是我的请求是一个 `http`，这样是不被允许的。
+
+ 暂时没有好的解决办法，只能换一个 `https` 的 openapi 接口了。
+
+### Access-Control-Allow-Origin 跨域
+
+ 当我换成 `https` 的接口后，接着它又报了下面的错：
+
+ ```sh
+ Failed to load https://www.apiopen.top/weatherApi?city=%E6%AD%A6%E6%B1%89: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://love-peach.github.io' is therefore not allowed access.
+ ```
+
+ 尝试了设置 `Access-Control-Allow-Origin`，页不管用
+
+ `instance.defaults.headers['Access-Control-Allow-Origin'] = '*'`
+
+暂时先不折腾这了，静态页面还是简简单单的展示得了，毕竟这个项目的重点是可配置的布局。我觉得，如果是个正常的服务器，我配个 `nginx` 应该能同时解决这两个问题，但是，暂时不知道怎么在 `gh-page` 中配置 `nginx`。还有一个可行方案，将 `gh-page` 自定义个域名，应该可以解决这个问题吧？

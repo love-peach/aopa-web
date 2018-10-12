@@ -14,6 +14,7 @@ instance.defaults.baseURL = process.env.VUE_APP_AXIOS_BASE_URL;
 
 // 设置请求默认属性
 instance.defaults.timeout = 10000;
+instance.defaults.headers['Access-Control-Allow-Origin'] = '*';
 instance.defaults.headers.get['X-Requested-With'] = 'XMLHttpRequest';
 instance.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -37,7 +38,7 @@ instance.interceptors.request.use((config) => {
   } else {
     promiseArr[config.url] = cancel;
   }
-  console.info('%c 请求地址为：', 'font-size:14px;color:#5cb85c;font-weight:bold;', config.url);
+  console.info('%c 请求地址为：', 'font-size:14px;color:#5cb85c;font-weight:bold;', config);
   return config;
 }, (error) => {
   console.log(error, 'interceptors.request error');

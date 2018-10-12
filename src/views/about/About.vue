@@ -6,7 +6,7 @@
       </app-layout-side-right>
     </template>
     <h1>This is an about page</h1>
-    <p v-dbClick="requestPoems">{{ poemsText }}</p>
+    <p v-dbClick="requestPoems" v-if="weather">{{ `${weather.city}:${weather.ganmao}` }}</p>
     <img
       v-for="imgUrl in imgArr"
       :key="imgUrl"
@@ -25,7 +25,7 @@ export default {
   name: 'About',
   data() {
     return {
-      poemsText: '',
+      weather: null,
       imgArr: [
         'http://covteam.u.qiniudn.com/test13.jpg',
         'http://covteam.u.qiniudn.com/test14.jpg',
@@ -47,8 +47,8 @@ export default {
   },
   methods: {
     requestPoems() {
-      this.$fetch.get(apiUrl.poems).then((res) => {
-        this.poemsText = res.result.content;
+      this.$fetch.get(apiUrl.weatherApi, { city: '武汉' }).then((res) => {
+        this.weather = res.data;
       }).catch((err) => {
         console.log(err, 'err');
       });

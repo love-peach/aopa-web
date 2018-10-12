@@ -6,4 +6,5 @@ export default {
   backEnd: '/topic/5433d5e4e737cbe96dcef31', // 参数错误
   demo: 'https://www.apiopen.top/satinApi',
   poems: `${urlPrefix}/singlePoetry`,
+  weatherApi: `${urlPrefix}/weatherApi`,
 };
