@@ -31,6 +31,7 @@
 <script>
 import waves from '@/directive/waves'; // 水波纹指令
 import Login from '@/components/custom/custom-login/CustomLogin.vue';
+console.log(process.env, 'process.env.NODE_ENV');
 
 export default {
   name: 'HomePage',
