@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'dev') {
 } else if (process.env.NODE_ENV === 'debug') {
   instance.defaults.baseURL = '';
 } else if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'pro') {
-  instance.defaults.baseURL = '';
+  instance.defaults.baseURL = 'http://api.apiopen.top/';
 }
 
 // 设置请求默认属性
@@ -108,7 +108,7 @@ instance.interceptors.response.use((response) => {
 }, (error) => {
   app.$Progress.fail();
   handleErrMsg(error);
-  console.error(error.message, 'interceptors.response error');
+  console.log(error.message, 'interceptors.response error');
   return Promise.resolve(error.response);
 });
 

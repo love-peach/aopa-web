@@ -11,12 +11,11 @@ module.exports = {
     port: 8082,
     open: true, // 配置自动启动浏览器
     proxy: {
-      '/poems': {
-        target: 'http://api.apiopen.top/singlePoetry',
-        ws: true,
+      '/api': {
+        target: 'http://api.apiopen.top/',
         changeOrigin: true,
         pathRewrite: {
-          '^/poems': '/',
+          '^/api': '/',
         },
       },
     },
