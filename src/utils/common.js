@@ -1,3 +1,7 @@
 const hello = name => `hello ${name}`;
+const hello2 = name => `hello2 ${name}`;
 
-export { hello };
+export {
+  hello,
+  hello2,
+};

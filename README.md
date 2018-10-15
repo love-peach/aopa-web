@@ -36,12 +36,12 @@ yarn run lint
 - [ ] cookie 策略
 - [x] 本地存储方案
 - [x] sass 变量的全局引用
-- [x] axios封装 连点cancel 本地断网处理
+- [x] axios 封装 连点 cancel 本地断网处理
 - [x] api 请求接口的封装
 - [x] 代理
 - [ ] mock
 - [x] utils commonjs 封装
-- [ ] 全局Toast
+- [ ] 全局 Toast
 - [x] VueProgressBar
 - [x] filters
 - [x] directive
@@ -50,7 +50,7 @@ yarn run lint
 - [x] keep-alive
 - [ ] 字体图标
 - [ ] 需要做 rem 方案吗
-- [ ] fastclick 需要加吗（fastclick好像对移动端作用较大）
+- [ ] fastclick 需要加吗（fastclick 好像对移动端作用较大）
 - [ ] 项目规范 https://cn.vuejs.org/v2/style-guide/index.html
 - [ ] 前端代码优化压缩
 - [ ] 单页面方案 还是多页面方案
@@ -66,7 +66,7 @@ yarn run lint
 
 ## 项目目录说明
 
-生成根目录树结构：`tree -a -F -L 1  -I node_modules\|.git\|.DS_Store`
+生成根目录树结构：`tree -a -F -L 1 -I node_modules\|.git\|.DS_Store`
 
 ```sh
 .
@@ -83,7 +83,7 @@ yarn run lint
 └── yarn.lock            依赖版本锁定
 ```
 
-生成源码目录树结构：`tree -a -F -L 1  -I node_modules\|.git\|.DS_Store src`
+生成源码目录树结构：`tree -a -F -L 1 -I node_modules\|.git\|.DS_Store src`
 
 ```sh
 src
@@ -104,9 +104,9 @@ src
 
 ### 文件夹命名
 
-统一采用小写 `中划线 -` 命名方式，如：`user-login`;
+统一采用小写 kebab-case (短横线分隔命名) `中划线 -` 命名方式，如：`user-login`;
 
-### js命名
+### js 命名
 
 统一采用小写 `中划线 -` 命名方式，如：`user-login.js`;
 
@@ -116,7 +116,7 @@ src
 
 ### SASS 编写规范
 
-参考: [编写Sass的八个技巧](https://www.sass.hk/skill/sass91.html)
+参考: [编写 Sass 的八个技巧](https://www.sass.hk/skill/sass91.html)
 
 ### 组件命名
 
@@ -196,7 +196,7 @@ VUE_APP_URL_PREFIX='/api'
 ```js
 module.exports = {
   baseUrl: process.env.BASE_URL,
-}
+};
 ```
 
 在项目中，也就是 `src` 中使用环境变量的话，必须以 `VUE_APP_` 开头。例如我们可以在 `src/utils/http.js` 中使用：
@@ -207,7 +207,7 @@ instance.defaults.baseURL = process.env.VUE_APP_AXIOS_BASE_URL;
 
 ## 有问有答
 
-这一部分，主要是讲项目中搭建以及开发过程过程中的问题。
+这一部分，主要是  讲项目中搭建以及开发过程过程中的问题。
 
 ### 页面布局怎么实现？
 
@@ -265,9 +265,9 @@ instance.defaults.baseURL = process.env.VUE_APP_AXIOS_BASE_URL;
 </template>
 ```
 
-### SASS 全局变量怎么实现？
+### SASS  全局变量怎么实现？
 
-通过 `vue.config.js` 配置文件实现，将 sass 全局变量传递给 Loaser。本项目中，不仅将变量传递了，而且还将 placeholders 以及 mixins 传递了，这样一来，写样式起来就很方便了。
+通过 `vue.config.js` 配置文件实现，将 sass  全局变量传递给 Loaser。 本项目中，不仅将变量传递了，而且还将 placeholders 以及 mixins 传递了，这样一来，写  样式起来就很方便了。
 
 ```js
 // vue.config.js
@@ -275,14 +275,14 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data: `@import "@/assets/style/base/index.scss`
-      }
-    }
-  }
-}
+        data: `@import "@/assets/style/base/index.scss`,
+      },
+    },
+  },
+};
 ```
 
-参考：[向预处理器 Loader 传递选项](https://cli.vuejs.org/zh/guide/css.html#%E5%90%91%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-loader-%E4%BC%A0%E9%80%92%E9%80%89%E9%A1%B9)
+ 参考：[向预处理器 Loader 传递选项](https://cli.vuejs.org/zh/guide/css.html#%E5%90%91%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-loader-%E4%BC%A0%E9%80%92%E9%80%89%E9%A1%B9)
 
 ### 项目中的环境变量具体是干嘛的？
 
@@ -292,7 +292,7 @@ module.exports = {
 - BASE_URL // 部署应用包时的基本 URL
 - VUE_APP_ENV // 项目环境变量，同 NODE_ENV 保持一致
 - VUE_APP_AXIOS_BASE_URL // 接口域名地址 如：http://www.aopa.com/
-- VUE_APP_URL_PREFIX // 接口url前缀 如：/api/someurl
+- VUE_APP_URL_PREFIX // 接口 url 前缀 如：/api/someurl
 
 ### 开发模式下，代理怎么设置？
 
@@ -312,7 +312,7 @@ module.exports = {
       },
     },
   },
-}
+};
 ```
 
 参考：[devserver-proxy](https://cli.vuejs.org/zh/config/#devserver-proxy);
@@ -327,10 +327,52 @@ import globalComponents from './utils/global-components';
 Vue.use(globalComponents);
 
 // global-components.js
-export default function (Vue) {
+export default function(Vue) {
   Vue.component('AppLayoutPage', AppLayoutPage);
   Vue.component('AppLayoutSideLeft', AppLayoutSideLeft);
   Vue.component('AppLayoutSideRight', AppLayoutSideRight);
+}
+```
+
+### 如何配置项目代码格式化
+
+推荐用 `VSCode` 编辑器开发项目。安装 `Prettier-Conde formatter` 插件
+
+然后 设置编辑器的 `首选项` mac 下快捷键 `Command + ,`, `User Settings`配置如下：
+
+```json
+{
+  "jshint.enable": false,
+  "editor.wordWrap": "off",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 24,
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "editor.renderWhitespace": "all",
+  "emmet.triggerExpansionOnTab": true,
+  "workbench.colorTheme": "Monokai",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.iconTheme": "vscode-icons",
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.idea": true,
+    "**/.svn": true,
+    "**/.vsconde": true,
+    "**/CVS": true,
+    "**/node_modules": true
+  },
+  "gitlens.blame.dateFormat": "YYYY年MM月DD日",
+  "vetur.validation.template": false,
+  "editor.tabSize": 2,
+  "window.zoomLevel": 0,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "prettier.trailingComma": "es5",
+  "prettier.singleQuote": true
 }
 ```
 
@@ -338,26 +380,26 @@ export default function (Vue) {
 
 ### https 中请求 http
 
- 将本项目部署到 `github` 的 `gh-page` 分支里，部署之后发现报错了：
+将本项目部署到 `github` 的 `gh-page` 分支里，部署之后发现报错了：
 
- ```sh
- xhr.js:178 Mixed Content: The page at 'https://love-peach.github.io/aopa-web/about' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://api.apiopen.top/singlePoetry'. This request has been blocked; the content must be served over HTTPS.
- ```
+```sh
+xhr.js:178 Mixed Content: The page at 'https://love-peach.github.io/aopa-web/about' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://api.apiopen.top/singlePoetry'. This request has been blocked; the content must be served over HTTPS.
+```
 
- 意思是 我的项目运行在 `https` 的 `github` 上，但是我的请求是一个 `http`，这样是不被允许的。
+意思是 我的项目运行在 `https` 的 `github` 上，但是我的请求是一个 `http`，这样是不被允许的。
 
- 暂时没有好的解决办法，只能换一个 `https` 的 openapi 接口了。
+暂时没有好的解决办法，只能换一个 `https` 的 openapi 接口了。
 
 ### Access-Control-Allow-Origin 跨域
 
- 当我换成 `https` 的接口后，接着它又报了下面的错：
+当我换成 `https` 的接口后，接着它又报了下面的错：
 
- ```sh
- Failed to load https://www.apiopen.top/weatherApi?city=%E6%AD%A6%E6%B1%89: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://love-peach.github.io' is therefore not allowed access.
- ```
+```sh
+Failed to load https://www.apiopen.top/weatherApi?city=%E6%AD%A6%E6%B1%89: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://love-peach.github.io' is therefore not allowed access.
+```
 
- 尝试了设置 `Access-Control-Allow-Origin`，页不管用
+尝试了设置 `Access-Control-Allow-Origin`，页不管用
 
- `instance.defaults.headers['Access-Control-Allow-Origin'] = '*'`
+`instance.defaults.headers['Access-Control-Allow-Origin'] = '*'`
 
 暂时先不折腾这了，静态页面还是简简单单的展示得了，毕竟这个项目的重点是可配置的布局。我觉得，如果是个正常的服务器，我配个 `nginx` 应该能同时解决这两个问题，但是，暂时不知道怎么在 `gh-page` 中配置 `nginx`。还有一个可行方案，将 `gh-page` 自定义个域名，应该可以解决这个问题吧？
