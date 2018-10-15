@@ -76,6 +76,7 @@ yarn run lint
 ├── vue.config.js        vue-cli 3.0 项目配置
 ├── babel.config.js      Babel 配置文件
 ├── README.md            项目说明文档
+├── .editorconfig        编辑器代码风格配置文件
 ├── .browserslistrc      目标浏览器配置表
 ├── .eslintrc.js         eslint 配置文件
 ├── .gitignore           git 忽略文件
@@ -90,14 +91,14 @@ src
 ├── assets/         静态资源目录
 ├── components/     组件目录
 ├── store/          store
+├── router/         路由配置目录
 ├── styles/         项目全局样式目录
 ├── diractive/      自定义指令
 ├── filters/        自定义过滤器
 ├── views/          视图页面目录
 ├── utils/          工具类目录
 ├── App.vue         主组件
-├── main.js         入口文件
-└── router.js       路由配置文件
+└── main.js         入口文件
 ```
 
 ## 项目规范
