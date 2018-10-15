@@ -22,6 +22,7 @@ module.exports = {
         allowFirstLine: false,
       },
     }],
+    'arrow-parens': ['error', 'as-needed'],
   },
 
   parserOptions: {

@@ -10,6 +10,9 @@
         <Login></Login>
       </app-layout-side-right>
     </template>
+    <template slot="breadCrumbs">
+      <app-break-crumbs :bread-crumbs-list="breadCrumbsList" ></app-break-crumbs>
+    </template>
     <h1 v-waves="{color: 'rgba(255,0,0,.3)'}">首页2</h1>
     <h1 v-waves v-dbClick="demo">首页2</h1>
     <img alt="Vue logo" src="@/assets/logo.png"><br>
@@ -31,6 +34,7 @@
 <script>
 import waves from '@/directive/waves'; // 水波纹指令
 import Login from '@/components/custom/custom-login/CustomLogin.vue';
+import AppBreakCrumbs from '@/components/framework/AppBreadCrumbs.vue';
 
 console.log(process.env, 'process.env.NODE_ENV');
 
@@ -41,10 +45,15 @@ export default {
   },
   components: {
     Login,
+    AppBreakCrumbs,
   },
   data() {
     return {
       amount: 12123.23,
+      breadCrumbsList: [
+        { name: '首页12', path: '/', isCurrentPath: false },
+        { name: '自定义路径', path: '/', isCurrentPath: true },
+      ],
     };
   },
   methods: {
