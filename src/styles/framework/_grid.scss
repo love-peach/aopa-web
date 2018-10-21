@@ -4,13 +4,16 @@
 $col-total: 12 !default;
 
 //超小屏名
-$col-xs: xs !default;;
+$col-xs: xs !default;
+;
 
 //列名前缀
-$col-pre: col !default;;
+$col-pre: col !default;
+;
 
 //槽宽
-$gutter: 30px !default;;
+$gutter: 30px !default;
+;
 
 //屏幕尺寸
 $sr-sizes: 768px 992px 1200px;
@@ -55,6 +58,7 @@ $container-maps: (sm:750px, md:970px, lg:1170px);
     left: $gutter/-2;
     right: $gutter/-2;
   }
+
   @extend %clearfix;
 }
 

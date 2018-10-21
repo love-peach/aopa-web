@@ -15,7 +15,7 @@ const storeListSession = {
 
 // 本地存储工厂函数，生成 set get remove 方法
 const storeFactory = (funcName, key, storeType = 'local') => {
-  store[`set${funcName}`] = (data) => {
+  store[`set${funcName}`] = data => {
     storage[storeType].setItem(key, data);
   };
   store[`get${funcName}`] = () => storage[storeType].getItem(key);
@@ -23,12 +23,12 @@ const storeFactory = (funcName, key, storeType = 'local') => {
 };
 
 // 循环添加 local 存储方法
-Object.keys(storeListLocal).forEach((funName) => {
+Object.keys(storeListLocal).forEach(funName => {
   storeFactory(funName, storeListLocal[funName], 'local');
 });
 
 // 循环添加 session 存储方法
-Object.keys(storeListSession).forEach((funName) => {
+Object.keys(storeListSession).forEach(funName => {
   storeFactory(funName, storeListSession[funName], 'session');
 });
 

@@ -23,6 +23,7 @@ module.exports = {
       },
     }],
     'arrow-parens': ['error', 'as-needed'],
+    'linebreak-style': 'off',
   },
 
   parserOptions: {

@@ -21,6 +21,7 @@ body {
   min-height: 100%;
   padding-bottom: $heightFooter;
 }
+
 .app-container {
   position: relative;
   width: $widthPageSize;
@@ -47,7 +48,7 @@ body {
   // overflow: hidden; // 等高样式
 }
 
-.app-side-left ~ .app-content {
+.app-side-left~.app-content {
   margin-left: $widthSideLeft;
   // padding-left: 25px;
 }
@@ -66,7 +67,7 @@ body {
   background-color: $demoColor1;
 }
 
-.app-side-right ~ .app-content-inside {
+.app-side-right~.app-content-inside {
   margin-right: $widthSideRight;
   // padding-right: 25px;
 }
@@ -75,8 +76,6 @@ body {
 .app-header {
   height: $heightHeader;
 }
-
-
 
 .app-footer {
   height: $heightFooter;

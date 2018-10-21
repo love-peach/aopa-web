@@ -149,6 +149,19 @@ import Login from '../../components/custom/custom-login/CustomLogin.vue';
 import Login from '@/components/custom/custom-login/CustomLogin.vue';
 ```
 
+### 路由写法与规范
+
+将路由分级，分到每个一级目录下。在每个一级目录下新建 `router.js`，然后，通过 `genaration-router.js` 循环爬取，`src/view` 目录下的所有 `router.js`，然后生成 `allRouter.js`;
+
+这样做的目的是防止单个路由文件过大，难以维护，以及开发过程中，不同开发人员之间同时修改路由文件产生的冲突。
+
+在 `router.js` 中引入组件的时候，统一采用异步路由的写法，并且写好 `webpackChunkName`：
+
+```js
+const NewsBillboards = () => import(/* webpackChunkName: "NewsBillboards" */ '@/views/news/billboards/index.vue');
+
+```
+
 ### 组件引入与使用规范
 
 引入组件时，统一采用大驼峰写法，
@@ -351,9 +364,8 @@ export default function(Vue) {
     "suppressShowKeyBindingsNotice": true
   },
   "javascript.implicitProjectConfig.experimentalDecorators": true,
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   "emmet.triggerExpansionOnTab": true,
-  "workbench.colorTheme": "Monokai",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.iconTheme": "vscode-icons",
   "files.exclude": {
@@ -362,7 +374,7 @@ export default function(Vue) {
     "**/.hg": true,
     "**/.idea": true,
     "**/.svn": true,
-    "**/.vsconde": true,
+    "**/.vscode": true,
     "**/CVS": true,
     "**/node_modules": true
   },
@@ -371,9 +383,14 @@ export default function(Vue) {
   "editor.tabSize": 2,
   "window.zoomLevel": 0,
   "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
   "prettier.trailingComma": "es5",
-  "prettier.singleQuote": true
+  "prettier.singleQuote": true,
+  "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "400",
+  "editor.detectIndentation": false,
+  "eslint.autoFixOnSave": true,
+  "workbench.colorTheme": "One Dark Pro Vivid"
 }
 ```
 
@@ -404,3 +421,11 @@ Failed to load https://www.apiopen.top/weatherApi?city=%E6%AD%A6%E6%B1%89: Respo
 `instance.defaults.headers['Access-Control-Allow-Origin'] = '*'`
 
 暂时先不折腾这了，静态页面还是简简单单的展示得了，毕竟这个项目的重点是可配置的布局。我觉得，如果是个正常的服务器，我配个 `nginx` 应该能同时解决这两个问题，但是，暂时不知道怎么在 `gh-page` 中配置 `nginx`。还有一个可行方案，将 `gh-page` 自定义个域名，应该可以解决这个问题吧？
+
+### eslint 报错
+
+> Expected linebreaks to be 'LF' but found 'CRLF'
+
+原因：不同的操作系统下，甚至是不同编辑器，不同工具处理过的文件可能都会导致换行符的改变。
+
+在 `.eslintrc.js` 文件中添加规则：`'linebreak-style': 'off'`

@@ -30,7 +30,7 @@ Vue.use(VueProgressBar, {
 });
 
 // 注册全局 filter
-Object.keys(filters).forEach((key) => {
+Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
 });
 

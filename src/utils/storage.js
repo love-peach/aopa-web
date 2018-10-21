@@ -16,7 +16,7 @@ const local = {
   },
   multiGet(keys) {
     const values = {};
-    keys.forEach((key) => {
+    keys.forEach(key => {
       values[key] = this.getItem(key);
     });
     return values;
@@ -42,7 +42,7 @@ const session = {
   },
   multiGet(keys) {
     const values = {};
-    keys.forEach((key) => {
+    keys.forEach(key => {
       values[key] = this.getItem(key);
     });
     return values;

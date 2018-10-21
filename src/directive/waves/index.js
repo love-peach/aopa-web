@@ -1,6 +1,6 @@
 import waves from './waves';
 
-const install = (Vue) => {
+const install = Vue => {
   Vue.directive('waves', waves);
 };
 

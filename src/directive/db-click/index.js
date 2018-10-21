@@ -1,6 +1,6 @@
 import dbClick from './dbClick';
 
-const install = (Vue) => {
+const install = Vue => {
   Vue.directive('dbClick', dbClick);
 };
 

@@ -7,7 +7,9 @@ const instance = axios.create({});
 
 let cancel = {};
 const promiseArr = {};
-const { CancelToken } = axios;
+const {
+  CancelToken,
+} = axios;
 
 // 根据运行环境 配置 baseURL
 instance.defaults.baseURL = process.env.VUE_APP_AXIOS_BASE_URL;
@@ -24,7 +26,7 @@ instance.defaults.responseType = 'json';
 instance.defaults.transformRequest = [data => (qs.stringify(data))];
 
 // 请求发送之前的拦截处理
-instance.interceptors.request.use((config) => {
+instance.interceptors.request.use(config => {
   // loading
   app.$Progress.start();
   const token = localStorage.getItem('token') || '';
@@ -40,7 +42,7 @@ instance.interceptors.request.use((config) => {
   }
   console.info('%c 请求地址为：', 'font-size:14px;color:#5cb85c;font-weight:bold;', config);
   return config;
-}, (error) => {
+}, error => {
   console.log(error, 'interceptors.request error');
   return Promise.reject(error);
 });
@@ -95,11 +97,11 @@ function handleErrMsg(error) {
 }
 
 // 请求完成之后的拦截处理
-instance.interceptors.response.use((response) => {
+instance.interceptors.response.use(response => {
   app.$Progress.finish();
   console.log('%c 请求结果为：', 'font-size:14px;color:#5cb85c;font-weight:bold;', response);
   return response;
-}, (error) => {
+}, error => {
   app.$Progress.fail();
   handleErrMsg(error);
   console.log(error.message, 'interceptors.response error');
@@ -140,17 +142,21 @@ export default {
       url,
       params, // get 请求时带的参数 叫 'params'
       ...options,
-      cancelToken: new CancelToken((c) => { cancel = c; }),
+      cancelToken: new CancelToken(c => {
+        cancel = c;
+      }),
     }).then(response => checkStatus(response))
       .then(res => checkCode(res));
   },
   post(url, data, options) {
-    return axios({
+    return instance({
       method: 'post',
       url,
       data, // post 请求时带的参数 叫 'data'
       ...options,
-      cancelToken: new CancelToken((c) => { cancel = c; }),
+      cancelToken: new CancelToken(c => {
+        cancel = c;
+      }),
     }).then(response => checkStatus(response))
       .then(res => checkCode(res));
   },

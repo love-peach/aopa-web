@@ -27,7 +27,7 @@ module.exports = {
       },
     },
   },
-  chainWebpack: (config) => {
+  chainWebpack: config => {
     config.resolve.alias
       // .set('@', path.resolve('src'))
       .set('assets', resolve('src/assets'))

@@ -47,9 +47,9 @@ export default {
   },
   methods: {
     requestPoems() {
-      this.$fetch.get(apiUrl.weatherApi, { city: '武汉' }).then((res) => {
+      this.$fetch.get(apiUrl.weatherApi, { city: '武汉' }).then(res => {
         this.weather = res.data;
-      }).catch((err) => {
+      }).catch(err => {
         console.log(err, 'err');
       });
     },

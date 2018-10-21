@@ -12,10 +12,10 @@ const About = () => import('@/views/about/About.vue');
 const News = () => import('@/views/news/index.vue');
 
 // 二级路由
-const NewsBillboards = () => import('@/views/news/billboards/index.vue');
+const NewsBillboards = () => import(/* webpackChunkName: "NewsBillboards" */ '@/views/news/billboards/index.vue');
 
 // 三级路由
-const NewsDetails = () => import('@/views/news/billboards/details/index.vue');
+const NewsDetails = () => import(/* webpackChunkName: "NewsDetails" */ '@/views/news/billboards/details/index.vue');
 
 Vue.use(Router);
 
